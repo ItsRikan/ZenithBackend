@@ -1,0 +1,31 @@
+{
+  "source":"https://www.bcrec.ac.in/",
+  "name": "Dr. B.C. Roy Engineering College, Durgapur",
+  "established": 2000,
+  "campus_area": "17 acres",
+  "programs": [
+    {"name": "B.Tech", "level": "UG"},
+    {"name": "M.Tech", "level": "PG"},
+    {"name": "MBA", "level": "PG"},
+    {"name": "MCA", "level": "PG"},
+    {"name": "B.Sc", "level": "UG"}
+  ],
+  "fees": {
+    "B.Tech": "INR 2.6L - 4.8L",
+    "others": "Varies"
+  },
+  "facilities": {
+    "hostels": true,
+    "library": true,
+    "medical_facility": true,
+    "auditoriums": true,
+    "atm_banking_facility": true
+  },
+  "placements": {
+    "median_package": "INR 350362"
+  },
+  "accreditation": {
+    "AICTE": true,
+    "MAKAUT": true
+  }
+}
