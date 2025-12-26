@@ -3,6 +3,7 @@ from .College_API.about import get_college_data
 from .College_API.admission_process import get_admission_info
 from .College_API.placement_details import get_top_placement_records
 from .College_API.college_contact_details import get_college_contact_details
+from .College_API.latest_events_and_news import get_news_and_events
 from .Scholarship_API.about import get_svmcm_about
 from .Scholarship_API.other_scholarships import get_other_scholarships_info
 from .Scholarship_API.schedule import get_svmcm_schedule

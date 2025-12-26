@@ -22,30 +22,38 @@ async def mailing_orchestrator(action:Action)->str:
         if (mail_details.get('message',None) is not None) or (mail_details.get('message',None) =="null"):
             if (mail_details.get('department',None) is None) or (mail_details.get('department') == 'null'):
                 departments = ", ".join(str(dept) for dept in DEPT_TO_MAILS.keys())
-                return f"{action.message}. Can you please mention the department where you want to mail. Available departments are : {departments}"
+                message= f"{action.message}. Can you please mention the department where you want to mail. Available departments are : {departments}"
+                return {'ready_to_send':False,'message':message}
             if (mail_details.get('send_mail_purpose',None) is None) or (mail_details.get('send_mail_purpose') == 'null'):
-                return f"{action.message}. Can you please mention your purpose of mailing"
+                message= f"{action.message}. Can you please mention your purpose of mailing"
+                return {'ready_to_send':False,'message':message}
             if (mail_details.get('user_details_for_mail',None) is None) or (mail_details.get('user_details_for_mail') == 'null'):
-                return f"{action.message}. Please provide your name, contact number, email address and college roll number if available."
+                message= f"{action.message}. Please provide your name, contact number, email address and college roll number if available."
+                return {'ready_to_send':False,'message':message}
             if (mail_details.get('mail_objective',None) is None) or (mail_details.get('mail_objective') == 'null'):
-                return f"{action.message}. Can you please mention your objetive of mailing"
+                message= f"{action.message}. Can you please mention your objetive of mailing"
+                return {'ready_to_send':False,'message':message}
+            
         else:
             if (mail_details.get('department',None) is None) or (mail_details.get('department') == 'null'):
                 departments = ", ".join(str(dept) for dept in DEPT_TO_MAILS.keys())
-                return f"Can you please mention the department where you want to mail. Available departments are : {departments}"
+                message= f"Can you please mention the department where you want to mail. Available departments are : {departments}"
+                return {'ready_to_send':False,'message':message}
             if (mail_details.get('send_mail_purpose',None) is None) or (mail_details.get('send_mail_purpose') == 'null'):
-                return f"Can you please mention your purpose of mailing"
+                message= f"Can you please mention your purpose of mailing"
+                return {'ready_to_send':False,'message':message}
             if (mail_details.get('user_details_for_mail',None) is None) or (mail_details.get('user_details_for_mail') == 'null'):
-                return f"Please provide your name, contact number,and email address"
+                message= f"Please provide your name, contact number,and email address"
+                return {'ready_to_send':False,'message':message}
             if (mail_details.get('mail_objective',None) is None) or (mail_details.get('mail_objective') == 'null'):
-                return f"Can you please mention your objetive of mailing"
-            
+                message= f"Can you please mention your objetive of mailing"
+                return {'ready_to_send':False,'message':message}
+                       
         for key,value in mail_details['user_details_for_mail'].items():
             if key=="roll_no":
                 continue
             if value is None or value=="null":
-                return f"Please provide your {key}"    
-            
+                return {'ready_to_send':False,'message':f"Please provide your {key}"}            
             
         # Mail model calling
         logging.debug("mail formatter model called")
@@ -53,34 +61,20 @@ async def mailing_orchestrator(action:Action)->str:
         logging.debug(f"Mail Formatter Respose => {mail_model_response}")
         # Check for error or unnecessary
         if (mail_model_response.error is not None) or (mail_model_response.necessity_score_of_mail<0.1):
-            return str(mail_model_response.reason_if_mail_rejected)
+            return {'ready_to_send':False,'message':str(mail_model_response.reason_if_mail_rejected)} 
         
         # Confidance Check
         if mail_model_response.confidence_score<0.6:
-            return "I’m not fully sure I understand your message. Could you please clarify what you mean?"
+            message = "I’m not fully sure I understand your message. Could you please clarify what you mean?"
+            return {'ready_to_send':False,'message':message}
         
-        # Calling Mailing Tool
-        mail_response:bool = await mailing_tool(
-            dept_name=action.department,
-            mail=mail_model_response.mail,
-            subject=mail_model_response.subject
-        )
-        logging.debug("Mail Sent Successfully")
-        # Check mail failure
-        if mail_response.get('status','failed')=='failed':
-            return f"""
-            Failed to send mail to {action.department} department. 
-            Issue : {mail_response.get('issue','Internal Error')}
-            Our maling tool is busy or has some error can you please try again later.
-            report on Email : {CREATOR_EMAIL} manually regarding this issue"""
         
-        return f"""Mail hasbeen sent successfully to {action.department} department. 
-        Mail Details : 
-            {mail_details}
-        """
+        mail_draft = f"Subject : {mail_model_response.mail} \n\n {mail_model_response.subject}"
+        return {'ready_to_send':True,'draft':mail_draft,'department':action.department}
     except Exception as e:
         logging.exception(f"Error in mailing orchestrator. Type = {type(e)} | error = {e}")
-        return f"""Failed to send mail to {action.department} department due to an internal error. Can you please report on Email : {CREATOR_EMAIL} manually regarding this issue"""
+        message = f"""Failed to send mail to {action.department} department due to an internal error. Can you please report on Email : {CREATOR_EMAIL} manually regarding this issue"""
+        return {'ready_to_send':False,'message':message}
 
 
 

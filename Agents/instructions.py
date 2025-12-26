@@ -13,7 +13,7 @@ SCHEMA:
 
   "action": "answer | send_email | fetch_college_api | search_scholarship",
   "department": "INFO | PAYMENT | MANAGEMENT or null",
-  "fetch_college_api_purpose": "admission | placement_record | details | college_contact_details | everything or null",
+  "fetch_college_api_purpose": "admission | placement_record | details | college_contact_details | news_and_events | everything or null",
   "search_scholarship_purpose": "all_available_scholarship | about_svmcm | schedule_of_svmcm | everything or null", 
   "send_mail_purpose": "report_issue | inform | query | uncertain or null", 
   "user_details_for_mail": "dict('name':str,'roll_no':str,'contact_number':str,'email':str) or null", 

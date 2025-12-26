@@ -16,7 +16,7 @@ class Action(BaseModel):
         "search_scholarship"
     ]
     department:Optional[Literal['INFO','PAYMENT','MANAGEMENT','null']] = None
-    fetch_college_api_purpose:Optional[Literal['admission','placement_record','details','college_contact_details','everything','null']] = None
+    fetch_college_api_purpose:Optional[Literal['admission','placement_record','details','college_contact_details','news_and_events','everything','null']] = None
     search_scholarship_purpose:Optional[Literal['all_available_scholarship','about_svmcm','schedule_of_svmcm','everything','null']] = None
     send_mail_purpose:Optional[Literal['report_issue','query','inform','uncertain','null']] = None
     user_details_for_mail:Optional[UserDetailsSchema]=None

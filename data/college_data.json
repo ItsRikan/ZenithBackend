@@ -19,8 +19,18 @@
     "library": true,
     "medical_facility": true,
     "auditoriums": true,
-    "atm_banking_facility": true
-  },
+    "atm_banking_facility": true,
+    "campus wifi":true,
+    "smart class room":true,
+    "power backup":true,
+    "gymnasium":true,
+    "Cafeteria / Canteen":true,
+    "Security & CCTV Surveillance":true,
+    "Student Club":true,
+    "NSS Activities":true,
+    "NCC Cadets":true,
+    "Departmental Computer Labs with High-Speed Internet":true
+  },  
   "placements": {
     "median_package": "INR 350362"
   },
