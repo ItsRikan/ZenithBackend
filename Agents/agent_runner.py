@@ -46,13 +46,13 @@ async def agent_runner(user_query,prev_action)->dict:
 
         # Format Answer If Required - 3
         logging.debug(f"MODEL LIST | Agent Runner | BEFORE LAST LAYER : {MODEL_LIST}")
-        if action.action=="answer" or action.action=="send_email":
+        if action.action=="answer":
             logging.debug(f"Before final_result=AnswerSchma(message=action_result) , type = {type(action_result)} | action_result = {action_result}")
             final_result=AnswerSchma(message=action_result)
             logging.debug("After final_result=AnswerSchma(message=action_result)")
         elif action.action=="send_email":
             if action_result.get('ready_to_send',False)==False:
-                final_result = action_result.message
+                final_result = action_result['message']
                 return {'final_result':final_result,'summary':action_taken,'ready_to_send':False}
             else:
                 final_result = "I am ready to send the mail. Just waiting for your approval"
