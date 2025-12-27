@@ -3,7 +3,6 @@ from .model import mail_formatter_model
 from .output_schema import MailSchema
 from .mailing_tool import mailing_tool
 from ..details import CREATOR_EMAIL,DEPT_TO_MAILS
-from ..logger import logging
 
 
 async def mailing_orchestrator(action:Action)->str:
@@ -17,7 +16,6 @@ async def mailing_orchestrator(action:Action)->str:
             'message':action.message
         }
 
-        logging.debug(mail_details)
         # Check all attributes
         if (mail_details.get('message',None) is not None) or (mail_details.get('message',None) =="null"):
             if (mail_details.get('department',None) is None) or (mail_details.get('department') == 'null'):
@@ -56,9 +54,7 @@ async def mailing_orchestrator(action:Action)->str:
                 return {'ready_to_send':False,'message':f"Please provide your {key}"}            
             
         # Mail model calling
-        logging.debug("mail formatter model called")
         mail_model_response:MailSchema=mail_formatter_model(input_object=mail_details)
-        logging.debug(f"Mail Formatter Respose => {mail_model_response}")
         # Check for error or unnecessary
         if (mail_model_response.error is not None) or (mail_model_response.necessity_score_of_mail<0.1):
             return {'ready_to_send':False,'message':str(mail_model_response.reason_if_mail_rejected)} 
@@ -72,7 +68,6 @@ async def mailing_orchestrator(action:Action)->str:
         mail_draft = f"Subject : {mail_model_response.mail} \n\n {mail_model_response.subject}"
         return {'ready_to_send':True,'draft':mail_draft,'department':action.department}
     except Exception as e:
-        logging.exception(f"Error in mailing orchestrator. Type = {type(e)} | error = {e}")
         message = f"""Failed to send mail to {action.department} department due to an internal error. Can you please report on Email : {CREATOR_EMAIL} manually regarding this issue"""
         return {'ready_to_send':False,'message':message}
 
