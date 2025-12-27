@@ -27,11 +27,14 @@ async def run_action(action: Action):
             return await get_college_data()
         elif action.fetch_college_api_purpose.lower()=="college_contact_details":
             return await get_college_contact_details()
+        elif action.fetch_college_api_purpose.lower()=="news_and_events":
+            return await get_news_and_events()
         elif action.fetch_college_api_purpose.lower()=="everything":
             admission = await get_admission_info()
             details = await get_college_data()
             placements = await get_top_placement_records()
-            return {"college_details":details,"admission":admission,"placement_record":placements}
+            news_and_events = await get_news_and_events()
+            return {"college_details":details,"admission":admission,"placement_record":placements,"news_and_events":news_and_events}
         
     # Scholarship Details
     if action.action == "search_scholarship":

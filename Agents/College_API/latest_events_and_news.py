@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 URL = "https://www.bcrec.ac.in/"
-def get_news_and_events():
+async def get_news_and_events():
     data = {'source':URL}
     try:
         response = requests.get(URL, headers={
