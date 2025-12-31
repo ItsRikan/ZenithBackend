@@ -1,0 +1,78 @@
+{
+  "source": "https://www.bcrec.ac.in/",
+  "name": "Dr. B.C. Roy Engineering College, Durgapur",
+  "established": 2000,
+  "campus_area": "17 acres",
+  "programs": [
+    {
+      "name": "B.Tech",
+      "level": "UG"
+    },
+    {
+      "name": "M.Tech",
+      "level": "PG"
+    },
+    {
+      "name": "MBA",
+      "level": "PG"
+    },
+    {
+      "name": "MCA",
+      "level": "PG"
+    },
+    {
+      "name": "B.Sc",
+      "level": "UG"
+    }
+  ],
+  "fees": {
+    "B.Tech": "INR 2.6L - 4.8L",
+    "others": "Varies"
+  },
+  "facilities": {
+    "hostels": true,
+    "library": true,
+    "medical_facility": true,
+    "auditoriums": true,
+    "atm_banking_facility": true,
+    "campus wifi": true,
+    "smart class room": true,
+    "power backup": true,
+    "gymnasium": true,
+    "Cafeteria / Canteen": true,
+    "Security & CCTV Surveillance": true,
+    "Student Club": true,
+    "NSS Activities": true,
+    "NCC Cadets": true,
+    "Departmental Computer Labs with High-Speed Internet": true
+  },
+  "hostels": {
+    "source": "https://bcrec.ac.in/facality-details/62a5f475092ad",
+    "hostel_for": {
+      "boys": [
+        "Satyen Bose of Residence for Boys",
+        "Shri Aurobindo Boys Hostel",
+        "Chittaranjan Boys Hostel"
+      ],
+      "girls": [
+        "Mother Teresa Hall of Residence for Girls",
+        "Nimarata Girls Hostel"
+      ]
+    },
+    "hostel_charges": {
+      "Caution Money": "Rs. 2000/- Refundable",
+      "Seat Rent": {
+        "4 bed room": "Rs. 10,000/- per semester",
+        "1 bed room": "Rs. 40,000/-per semester"
+      },
+      "Mess Charge": "Rs. 5,000/- PM  (for 11months)"
+    }
+  },
+  "placements": {
+    "median_package": "INR 350362"
+  },
+  "accreditation": {
+    "AICTE": true,
+    "MAKAUT": true
+  }
+}

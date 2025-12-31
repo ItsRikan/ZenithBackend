@@ -1,0 +1,12 @@
+{
+    "source":"https://www.bcrec.ac.in/contact-us",
+    "address": "Jemua Road, Fuljhore, Durgapur, West Bengal - 713206",
+    "phone": ["0343-2501353", "6297128554"],
+    "emails": ["info@bcrec.ac.in", "accounts@bcrec.ac.in", "tpo.kol@bcrec.ac.in"],
+    "call_for_admission":["9333928874", "9832131164", "9932245570" , "9434250472"],
+    "query_related_to_payment":{
+        "department":"Accounts Department BCREC and BCRECAPC",
+        "mobile_num":["7001380141","0343-2501353 Extn. 278"],
+        "email":"accounts@bcrec.ac.in"
+    }
+}
