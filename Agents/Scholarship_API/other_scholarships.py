@@ -1,9 +1,11 @@
 import json
 import os
+import sys
 
 async def get_other_scholarships_info():
     try:
-        file_path = os.path.join('data', 'scholarship_data.json')
+        root_dir = os.path.dirname(sys.path[0])
+        file_path = os.path.join(root_dir, 'data', 'scholarship_data.json')
         with open(file_path,'r') as f:
             obj = json.load(f)
             return obj
