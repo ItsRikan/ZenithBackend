@@ -1,7 +1,7 @@
-from ..Agents.agent_runner import agent_runner
+from Agents.agent_runner import agent_runner
 from fastapi import FastAPI
-from .input_schema import InputSchema,InputMailSchema
-from ..Agents.send_mail.mailing_tool import mailing_tool
+from input_schema import InputSchema,InputMailSchema
+from Agents.send_mail.mailing_tool import mailing_tool
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
