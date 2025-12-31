@@ -1,4 +1,4 @@
-{
+SCHOLARSHIP_DETAILS:dict = {
 	"source":"https://www.bcrec.ac.in/custom-page/62a7197e27fc1",
     "G. P. Birla Scholarship" : "www.gpbirlaedufoundation.com",
 	"Keep India Smiling Foundation Scholarship Programme" :	"www.colgate.com",
