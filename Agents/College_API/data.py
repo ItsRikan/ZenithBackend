@@ -3,6 +3,21 @@ ABOUT_COLLEGE:dict={
   "name": "Dr. B.C. Roy Engineering College, Durgapur",
   "established": 2000,
   "campus_area": "17 acres",
+  "branches":['IT', 'CSD', 'CS','AIML', 'DS', 'CE', 'ME', 'EE', 'ECE','MBA', 'MCA'],
+  "library":[{
+      "Books (No of titles - 8084)":100448,
+      "CD-ROMs/DVDs":	4109,
+      "Bound Vols. of  Journals": 	482,
+      "GRAND TOTAL":	105039,
+  },{
+      "Central Library (Lending & Reference)":	29129,
+      "Book Bank (including MCA & FMS Book Bank books)":	65089,
+      "Departmental Libraries":	978,
+      "MCA (Central Library)":	1562,
+      "FMS (Departmental Library)":	3138,
+      "GIFT/Specimen Copy":	449,
+      "Total":	100448,
+  }],
   "programs": [
     {
       "name": "B.Tech",
